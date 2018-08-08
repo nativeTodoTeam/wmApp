@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 
@@ -14,24 +6,35 @@ import {
   scaleSize,
   scaleFont
 } from '../common/config/screenSize';
+import { connect } from 'react-redux';
+import {
+  getWeatherState,
+} from '../reducers/index.js';
+
+import {
+  getWeather,
+} from '../actions/index';
 
 type Props = {};
-export default class App extends Component<Props> {
+
+const mapStateToProps = (state) => {
+  return {
+    weather: getWeatherState(state),
+  };
+}
+
+class HomeContainer extends Component<Props> {
 
   componentDidMount() {
+
+    // xg 测试
+    this.props.getWeather()
     console.log(scaleSize(24))
     console.log(scaleFont(24))
-    fetch(`${ Config.host }/userInfo?userId=1`)
-      .then((response) => response.json())
-      .then((responseJson) => {
-        console.log(responseJson);
-      })
-      .catch((error) => {
-        console.error(error);
-      });
   }
 
   render() {
+    console.log('weather', this.props.weather)
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to wmApp</Text>
@@ -58,3 +61,10 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+
+export default connect(
+  mapStateToProps,
+  {
+    getWeather,
+  }
+)(HomeContainer);
