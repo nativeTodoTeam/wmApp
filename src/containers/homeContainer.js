@@ -28,7 +28,7 @@ class HomeContainer extends Component<Props> {
   componentDidMount() {
 
     // xg 测试
-    this.props.getWeather()
+    // this.props.getWeather()
     console.log(scaleSize(24))
     console.log(scaleFont(24))
   }
