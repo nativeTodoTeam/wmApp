@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import HomeContainer from './containers/homeContainer';
+// import HomeContainer from './containers/homeContainer';
+import HomeContainer from './containers/bookstoreContainer';
 import SplashScreen from 'react-native-splash-screen';
 
 import reducers from './reducers';

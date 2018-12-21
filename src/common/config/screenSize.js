@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 const defaultSize = {
-  width: 350,
+  width: 375,
   height: 667,
 };
 
